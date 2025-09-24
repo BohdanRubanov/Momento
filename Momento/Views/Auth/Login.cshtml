@@ -1,0 +1,38 @@
+@{
+    ViewData["Title"] = "Увійти";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Увійти - Momento</title>
+    <link rel="stylesheet" href="~/css/registration.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="main">
+        
+        
+        <img src="~/images/back.png" class="back" alt="">
+
+        <form asp-action="Login" method="post" class="reg-form">
+            <p class="logo">Momento</p>
+            <div class="input-group">
+                <input type="email" name="email" placeholder="Email" required class="reg-input">
+            </div>
+
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Пароль" required class="reg-input">
+            </div>
+
+            <button type="submit" class="reg-button">Увійти</button>
+            <p class="or">━━━━ або ━━━━</p>
+            <a asp-controller="Registration" asp-action="Index" class="enter">Зареєструватися</a>
+        </form>
+
+        </div>
+    </div>
+</body>
+</html>

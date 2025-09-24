@@ -1,0 +1,89 @@
+@model Momento.Models.Registration
+
+@{
+    ViewData["Title"] = "Мій профіль";
+}
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Momento</title>
+    <link rel="stylesheet" href="~/css/profile.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-card">
+            <h2 class="profile-title">Мій профіль</h2>
+
+            <form asp-action="Update" asp-controller="Profile" method="post" enctype="multipart/form-data" id="profileForm">
+                <input type="hidden" asp-for="Id" />
+                <input type="file" name="avatarFile" id="avatarInput" class="file-input" accept="image/*" />
+
+                <div class="avatar-section">
+                    <div class="avatar-upload" onclick="document.getElementById('avatarInput').click()">
+                        <img id="avatarPreview" 
+                             src="@Url.Content(string.IsNullOrEmpty(Model.AvatarUrl) ? "~/images/avatar.png" : Model.AvatarUrl)" 
+                             alt="avatar" 
+                             class="avatar-preview" />
+                        <div class="avatar-edit-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+        
+                <div class="form-section">
+                    <div class="input-group">
+                        <label class="input-label">Нікнейм</label>
+                        <input asp-for="Nickname" class="form-input" placeholder="Введіть ваш нікнейм" />
+                        <span asp-validation-for="Nickname" class="validation-error"></span>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">Email</label>
+                        <input asp-for="Email" class="form-input" placeholder="Введіть ваш email" />
+                        <span asp-validation-for="Email" class="validation-error"></span>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label">Статус</label>
+                        <input asp-for="Status" class="form-input" placeholder="Ваш статус" />
+                        <span asp-validation-for="Status" class="validation-error"></span>
+                    </div>
+                </div>
+
+       
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">
+                        Зберегти зміни
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('avatarInput').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('avatarPreview').src = e.target.result;
+                    document.getElementById('avatarPreview').classList.add('avatar-changed');
+                };
+                reader.readAsDataURL(file);
+                
+                setTimeout(() => {
+                    document.getElementById('profileForm').submit();
+                }, 1000);
+            }
+        });
+
+    </script>
+</body>
+</html>

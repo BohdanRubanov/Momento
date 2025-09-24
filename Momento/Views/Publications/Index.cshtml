@@ -1,0 +1,60 @@
+@model List<Momento.Models.Publication>
+@{
+    ViewData["Title"] = "Мої публікації";
+    var userId = Context.Session.GetInt32("UserId");
+    var user = Model?.FirstOrDefault()?.User;
+}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Momento</title>
+    <link rel="stylesheet" href="~/css/publications.css" asp-append-version="true" />
+</head>
+<body>
+    
+    <div class="profile-container">
+        <div class="profile-header">
+            <img src="@(string.IsNullOrEmpty(user?.AvatarUrl) ? Url.Content("~/images/avatar.png") : user.AvatarUrl)" 
+     alt="user" class="profile-avatar"/>
+            <div class="profile-info">
+                <h1 class="profile-username">@(user?.Nickname ?? "Користувач")</h1>
+                <p class="profile-stats">@(Model?.Count ?? 0) публікацій</p>
+            </div>
+        </div>
+
+        @if (Model == null || !Model.Any())
+        {
+            <div class="empty-state">
+                <h2>Ще немає публікацій</h2>
+                <p>Створіть свою першу публікацію!</p>
+                <a asp-controller="Publications" asp-action="Create" class="create-btn">Створити публікацію</a>
+            </div>
+        }
+        else
+        {
+            <div class="publications-grid">
+                @foreach (var post in Model)
+                {
+                    <div class="publication-item">
+                        <img class="publication-image" src="@post.PhotoUrl" alt="publication" />
+                        <div class="publication-overlay">
+                            <div class="publication-content">
+                                <p class="publication-caption">@post.Caption</p>
+                                <form asp-action="Delete" asp-controller="Publications" method="post" class="delete-form">
+                                    <input type="hidden" name="id" value="@post.Id" />
+                                    <button type="submit" class="delete-btn" onclick="return confirm('Видалити цю публікацію?')">
+                                        <img src="~/images/delete.png" alt="Видалити" class="delete-icon" />
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+
+</body>
+</html>

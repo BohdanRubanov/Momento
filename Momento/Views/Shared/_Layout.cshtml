@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Momento</title>
+    <link rel="stylesheet" href="~/css/header.css" asp-append-version="true" />
+</head>
+<body class="back-color">
+    <div class="container">
+        <div class="sidebar">
+            <p class="logo">Momento</p>
+            <div class="menu">
+               <a asp-controller="Main" asp-action="Index"><img src="~/images/home.svg" class="header-icon"></img> Головна</a>
+                <a asp-controller="Profile" asp-action="Index"><img class="header-icon" src="~/images/profile.svg"></img> Мій профіль</a>
+                <a asp-controller="Publications" asp-action="Index"><img class="header-icon" src="~/images/my_p.svg"></img> Мої публікації</a>
+                <a asp-controller="Publications" asp-action="Create"><img class="header-icon" src="~/images/add_p.svg"></img> Додати публікацію</a>
+                <a asp-controller="Auth" asp-action="Logout" ><img class="header-icon" src="~/images/logout.png">Вийти</a>
+            </div>
+        </div>
+
+        <main class="content">
+            @RenderBody()
+        </main>
+    </div>
+</body>
+</html>

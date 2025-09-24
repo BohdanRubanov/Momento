@@ -1,0 +1,38 @@
+@model Momento.Models.Registration
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація</title>
+    <link rel="stylesheet" href="~/css/registration.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="main">
+        <img src="~/images/back.png" class="back" alt="">
+        <form method="post" asp-controller="Registration" asp-action="Register" class="reg-form">
+            <p class="logo">Momento</p>
+            <input asp-for="Nickname" placeholder="Нікнейм" class="reg-input"/>
+            <span asp-validation-for="Nickname"></span>
+
+            <input asp-for="Email"  placeholder="Пошта" class="reg-input"/>
+            <span asp-validation-for="Email"></span>
+
+            <input asp-for="Password"  placeholder="Пароль" type="password" class="reg-input"/>
+            <span asp-validation-for="Password"></span>
+
+            <button type="submit" class="reg-button">Зареєструватись</button>
+
+            <p class="or">━━━━ або ━━━━</p>
+            <a asp-controller="Auth" asp-action="Login" class="enter">Увійти</a>
+        </form>
+        
+    </div>
+</body>
+</html>

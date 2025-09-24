@@ -1,0 +1,63 @@
+@model List<Momento.Models.Publication>
+@{
+    ViewData["Title"] = "Головна";
+}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momento</title>
+    <link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="posts-container">
+        @foreach (var post in Model)
+        {
+            <div class="post">
+                <div class="post-header">
+                    <img src="@Url.Content(string.IsNullOrEmpty(post.User?.AvatarUrl) ? "~/images/avatar.png" : post.User.AvatarUrl)" 
+                         alt="user" class="avatar"/>
+                    <p>@post.User?.Nickname</p>
+                </div>
+
+                <img class="post-img" src="@post.PhotoUrl" alt="publication" />
+
+                <div class="post-footer">
+                    <p class="post-caption">@post.Caption</p>
+                    
+                    <div class="post-actions">
+                        <button class="like-btn">
+                            <img src="~/images/like.png" class="like" alt="like">
+                            <span class="like-count">0</span>
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+        }
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const likeButtons = document.querySelectorAll('.like-btn');
+        
+        likeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const likeCount = this.querySelector('.like-count');
+                const isLiked = this.classList.contains('liked');
+                
+                if (isLiked) {
+                    this.classList.remove('liked');
+                    likeCount.textContent = parseInt(likeCount.textContent) - 1;
+                } else {
+                    this.classList.add('liked');
+                    likeCount.textContent = parseInt(likeCount.textContent) + 1;
+                }
+                
+            });
+        });
+    });
+    </script>
+</body>
+</html>

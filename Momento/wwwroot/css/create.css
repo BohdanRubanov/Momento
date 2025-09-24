@@ -1,0 +1,119 @@
+
+.create-page {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 43px;
+}
+
+.create-container {
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    gap: 43px;
+}
+.create-form{
+    display: flex;
+    gap: 43px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error-list {
+    color: red;
+    text-align: left;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.error-list li {
+    margin-bottom: 5px;
+}
+.camera{
+    width: 200px;
+    height: 200px;
+}
+.image-preview {
+    border: 1px solid #000000;
+    border-radius: 10px;
+    width: 795px;
+    height: 343px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.preview-icon {
+    font-size: 100px;
+    color: #000;
+}
+
+.file-input {
+    display: none;
+}
+
+.select-photo-btn {
+    background: #6f42c1;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.select-photo-btn:hover {
+    background: #5a32a3;
+}
+
+.caption-input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 16px;
+    outline: none;
+}
+
+.caption-input:focus {
+    border-color: #6f42c1;
+    box-shadow: 0 0 0 2px rgba(111, 66, 193, 0.2);
+}
+
+.submit-btn {
+    background: #6f42c1;
+    color: white;
+    border: none;
+    width: 170px;
+    border-radius: 20px;
+    padding: 10px 40px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #5a32a3;
+}
+
+
+@media (max-width: 768px) {
+    .create-container {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .image-preview {
+        height: 250px;
+    }
+    
+    .preview-icon {
+        font-size: 80px;
+    }
+}

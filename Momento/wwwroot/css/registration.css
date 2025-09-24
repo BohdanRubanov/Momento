@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Script&display=swap');
+
+.main{
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    font-family: "Inter", sans-serif;
+}
+.reg-form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+.reg-input{
+    width: 313px;
+    height: 41px;
+    color: #5D5A5A;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding-left: 20px;
+}
+
+.reg-button{
+    width: 170px;
+    height: 32px;
+    background-color: #9E60D7;
+    border-radius: 34px;
+    color: "white";
+    border-color: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.logo {
+  display: flex;
+  font-size: 48px;
+  font-weight: 400;
+  font-family: "League Script", cursive;
+  background: linear-gradient(to right, #FF0000, #3300FF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  padding: 0 15px;
+  -webkit-text-fill-color: transparent;
+  font-style: normal;
+}
+.or{
+    color: #A09A9A;
+    font-size: 10px;
+}
+.enter{
+    text-decoration: none;
+    color: rgba(0, 35, 175, 0.66);
+    font-size: 12px;
+}

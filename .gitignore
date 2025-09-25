@@ -1,0 +1,12 @@
+/.vscode/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+bin/
+obj/
+Debug/
+Release/
+.idea/
+appsettings.*.json
